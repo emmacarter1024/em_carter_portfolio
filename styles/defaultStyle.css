@@ -1,0 +1,208 @@
+/*  Imports */
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@700&display=swap');
+
+/*  Variables */
+:root{
+    /* Spacers - I really like this concept! */
+    --sp1: 8px;
+    --sp2: 16px;
+    --sp3: 32px;
+
+    /* Colours */
+    --surface-color: #2F303A;
+    --primary-color: #DDDDDD;
+    --logo-color: #FFFFFF;
+    --accent-1-color: #01579B;
+    --accent-2-color: #1E88E5;
+    --accent-3-color: #ffa726;
+    --error-color: #B00020;
+
+    --base-font-size: 16px;
+
+    --content-width: 1200px;
+    --nav-width:100vw;
+}
+
+/*  Common Styles */
+* {
+    box-sizing: border-box;
+    margin: 0px;
+}
+
+body {
+    margin: 0px;
+    background-color: var(--surface-color);
+    color: var(--primary-color);
+    font-size: var(--base-font-size);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: 3em;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 2.25em;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 1.5em;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 700;
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+    margin-top: var(--sp1);
+}
+
+nav {
+    color: var(--surface-color);
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: var(--nav-width);
+    padding: 0px var(--sp2);
+    position: sticky;
+    top: 0;
+}
+
+nav p {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+div {
+    margin: 0px;
+    padding: 0px;
+}
+
+footer {
+    color: var(--surface-color);
+    background-color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: -webkit-sticky;       /* safari apparently? */
+    position: sticky;
+    bottom: 0;
+    width: var(--nav-width);
+}
+
+/* Classes */
+
+.debug-ln {
+    border: 1px solid red;
+}
+
+.social_link {
+    height: 40px;
+    margin: var(--sp1) var(--sp2);
+}
+
+.nav_menu_button {
+    padding: var(--sp1) var(--sp2);
+    border-bottom: 10px solid var(--primary-color);
+}
+
+.nav_menu_button:hover {
+    border-bottom: 10px solid var(--surface-color);
+}
+
+.portfolio_link_container {
+    border: 1px solid var(--primary-color);
+    height: 300px;
+    margin: var(--sp3);
+    border-radius: var(--sp3);
+    padding: var(--sp3);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+/* Ids */
+#logo p {
+    font-family: 'Bungee', sans-serif;
+    font-size: 4.5em;
+    margin: -3.0rem 0rem;
+}
+
+#nav_menu {
+    display: flex;
+    align-items: center;
+}
+
+#footer_identity {
+    margin: 0 var(--sp2) var(--sp1) var(--sp2);
+}
+
+#hero_header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: var(--content-width);
+}
+
+#about_me {
+    padding: var(--sp3);
+}
+
+#hero_terminal_animation {
+    padding: var(--sp3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#hero_terminal_animation p {
+    text-align: center;
+}
+
+#work {
+    width: var(--content-width);
+}
+
+#fpfa_container {
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0.5) 60%,
+            rgba(0, 0, 0, 1) 100%
+        ), url("../images/FPFA_preview.png");
+    background-repeat: no-repeat;
+    background-position: 100% 15%;
+    background-size: 135%;
+}
+
+#saas_container {
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0.5) 60%,
+            rgba(0, 0, 0, 1) 100%
+        ), url("../images/saas_wireflows.png");
+    background-repeat: no-repeat;
+    background-position: 55% 15%;
+    background-size: 135%;
+}
+
+#terminal_game_container {
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0.5) 60%,
+            rgba(0, 0, 0, 1) 100%
+        ), url("../images/question-mark-on-chalkboard.jpg");
+    background-repeat: repeat;
+    background-position: center center;
+    background-size: 35%;
+}
