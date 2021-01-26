@@ -22,7 +22,7 @@
     --base-font-size: 16px;
 
     --content-width: 1200px;
-    --nav-width:100vw;
+    --nav-width:100%;
 }
 
 /*  Common Styles */
@@ -70,7 +70,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: var(--nav-width);
+    width: var(--nav-width); 
     padding: 0px var(--sp2);
     position: sticky;
     top: 0;
