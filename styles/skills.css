@@ -1,0 +1,22 @@
+/* Classes */
+
+.skill_block {
+    padding: var(--sp2);
+}
+
+
+
+/* Ids */
+
+#hero_header {
+    width: var(--content-width);
+}
+
+#my_skills {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    width: var(--content-width);
+    margin-top: var(--sp2);
+}
+
