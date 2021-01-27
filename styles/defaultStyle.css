@@ -23,6 +23,8 @@
 
     --content-width: 1200px;
     --nav-width:100%;
+
+    --default-drop-shadow: 3px 3px 5px 2px rgba(0,0,0,0.57);
 }
 
 /*  Common Styles */
@@ -79,6 +81,7 @@ nav {
     padding: 0px var(--sp2);
     position: sticky;
     top: 0;
+    box-shadow: var(--default-drop-shadow);
 }
 
 nav p {
@@ -102,6 +105,7 @@ footer {
     position: sticky;
     bottom: 0;
     width: var(--nav-width);
+    box-shadow: var(--default-drop-shadow);
 }
 
 /* Classes */

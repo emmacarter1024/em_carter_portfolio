@@ -6,8 +6,50 @@
     <title>Em Carter</title>
     <link href="styles/defaultStyle.css" rel="stylesheet" type="text/css">
     <link href="styles/index.css" rel="stylesheet" type="text/css">
+    <script>
+
+        var delayDone = false;
+        var delay = 3000;
+        var lineDelay = 1000;
+        var speed = 50;
+
+        var idx = 0;
+        var line = 0;
+        var spanName = ["text_block_1", "text_block_1", "text_block_1", "text_block_2", "text_block_3", "text_block_3", "text_block_3"];
+
+        var lines = ["./EmCarter.sh",
+                    "Programmer.",
+                    "UX/UI Designer.",
+                    "Problem Solver.",
+                    "",
+                    ""];
+        var finish = "em@here:~$";
+
+        // a little bit of inspiration from https://www.w3schools.com/howto/howto_js_typewriter.asp
+        // then I pushed it a little bit further.
+        function typeThatConsole() {
+            if (!delayDone) {
+                delayDone = true;
+                setTimeout(typeThatConsole, delay);
+            } else if (line == lines.length) {
+                document.getElementById(spanName[line-1]).innerHTML += finish;
+            } else if (line < lines.length && idx == lines[line].length) {
+                //verified that && short circuits like java
+                idx = 0;
+                line++;
+                document.getElementById(spanName[line]).innerHTML += "<br/>"
+                setTimeout(typeThatConsole, lineDelay);
+            } else if (line < lines.length && idx < lines[line].length) {
+                document.getElementById(spanName[line]).innerHTML += lines[line].charAt(idx);
+                idx++;
+                setTimeout(typeThatConsole, speed);
+            }
+
+            
+        }
+    </script>
 </head>
-<body>
+<body onload="typeThatConsole()">
     <nav>
         <div id="nav_menu">
             <div class="nav_menu_button">
@@ -45,7 +87,12 @@
                 <p>Contact me at email.me@real.domain</p>
             </div>
         </div>
-        <div id="hero_terminal_animation"><p>WOAH CRAZY ANIMATION SHIT HERE!<br/>COMING SOON TO A PORTFOLIO NEAR YOU!</p></div>
+        <div id="hero_terminal_animation">
+            <div id="terminal_window">
+                <div id="terminal_task_bar"><p>Terminal</p></div>
+                <div id="terminal_render_area"><p id="terminal_text">em@here:~$<span id="text_block_1"></span><span id="text_block_2" class="accent3"></span><span id="text_block_3"></span><span id="cursor">&nbsp;</span></p></div>
+            </div>
+        </div>
     </section>
     <section id="work">
         <div class="portfolio_link_container" id="fpfa_container">

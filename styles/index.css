@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+
 /* Classes */
 .portfolio_link_container {
     border: 1px solid var(--primary-color);
@@ -8,12 +10,20 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    box-shadow: var(--default-drop-shadow);
 }
+
+.accent3 {
+    color: var(--accent-3-color);
+}
+
+/* Ids */
 
 #hero_header {
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: var(--content-width);
+    align-items: center;
 }
 
 #about_me {
@@ -25,10 +35,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-#hero_terminal_animation p {
-    text-align: center;
+    height: 400px;
 }
 
 #work {
@@ -69,4 +76,56 @@
     background-repeat: repeat;
     background-position: center center;
     background-size: 35%;
+}
+
+#terminal_window {
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: var(--sp1);
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content auto;
+    box-shadow: var(--default-drop-shadow);
+}
+
+#terminal_task_bar {
+    color: var(--surface-color);
+    width: 100%;
+    padding: 0px var(--sp2);
+}
+
+#terminal_task_bar p {
+    font-family: 'JetBrains Mono', monospace;
+    text-align: left;
+    margin-block: 0.5em;
+}
+
+#terminal_render_area {
+    background-color: black;
+    width: 100%;
+    border-radius: 0px 0px var(--sp1) var(--sp1);
+    padding: var(--sp1);
+}
+
+#terminal_render_area p {
+    font-family: 'JetBrains Mono', monospace;
+    text-align: left;
+}
+
+/* A little bit of inspiration from https://www.codesdope.com/blog/article/creating-typewriter-text-animation-using-css/ */
+#cursor {
+    background-color: var(--primary-color);
+
+    animation: animated-cursor 800ms ease infinite;
+}
+
+@keyframes animated-cursor {
+    from {
+        background-color: var(--primary-color);
+    }
+    to {
+        background-color: var(--surface-color);
+    }
 }
