@@ -118,7 +118,7 @@
 #cursor {
     background-color: var(--primary-color);
 
-    animation: animated-cursor 800ms ease infinite;
+    animation: animated-cursor 800ms cubic-bezier(1,0,0,1) infinite;
 }
 
 @keyframes animated-cursor {
