@@ -131,6 +131,10 @@
     text-align: left;
 }
 
+#terminal_instructions p {
+    opacity: 0%;
+}
+
 /* A little bit of inspiration from https://www.codesdope.com/blog/article/creating-typewriter-text-animation-using-css/ */
 #cursor {
     background-color: var(--primary-color);

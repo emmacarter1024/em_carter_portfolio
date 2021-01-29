@@ -67,8 +67,10 @@ function toggleInteractiveConsole(isConsoleInteractive) {
     if (isConsoleInteractive) {
         document.addEventListener("keydown", handleDocumentKeyDownEvent);
         $("#interactive_mode_indicator").css("display", "inline");
+        $("#terminal_instructions p").css("opacity", "100%");
     } else {
         $("#interactive_mode_indicator").css("display", "none");
+        $("#terminal_instructions p").css("opacity", "0%");
         document.removeEventListener("keydown", handleDocumentKeyDownEvent);
     }
 }
@@ -115,7 +117,7 @@ function handleDocumentKeyDownEvent(event) {
                 }
             }
             let fileNamePosition = homeDirFiles.indexOf(fullCommandName)
-            if (fileNamePosition > 0) {
+            if (fileNamePosition >= 0) {
                 fullCommandName = "./"+fullCommandName;
             }
 
