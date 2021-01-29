@@ -4,49 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Em Carter</title>
-    <link href="styles/defaultStyle.css" rel="stylesheet" type="text/css">
-    <link href="styles/index.css" rel="stylesheet" type="text/css">
-    <script>
-
-        var delayDone = false;
-        var delay = 3000;
-        var lineDelay = 1000;
-        var speed = 50;
-
-        var idx = 0;
-        var line = 0;
-        var spanName = ["text_block_1", "text_block_1", "text_block_1", "text_block_2", "text_block_3", "text_block_3"];
-
-        var lines = ["./EmCarter.sh",
-                    "Programmer.",
-                    "UX/UI Designer.",
-                    "Problem Solver.",
-                    ""];
-        var finish = "em@here:~$";
-
-        // a little bit of inspiration from https://www.w3schools.com/howto/howto_js_typewriter.asp
-        // then I pushed it a little bit further.
-        function typeThatConsole() {
-            if (!delayDone) {
-                delayDone = true;
-                setTimeout(typeThatConsole, delay);
-            } else if (line == lines.length) {
-                document.getElementById(spanName[line-1]).innerHTML += finish;
-            } else if (line < lines.length && idx == lines[line].length) {
-                //verified that && short circuits like java
-                idx = 0;
-                line++;
-                document.getElementById(spanName[line]).innerHTML += "<br/>"
-                setTimeout(typeThatConsole, lineDelay);
-            } else if (line < lines.length && idx < lines[line].length) {
-                document.getElementById(spanName[line]).innerHTML += lines[line].charAt(idx);
-                idx++;
-                setTimeout(typeThatConsole, speed);
-            }
-
-            
-        }
-    </script>
+    <link href="./styles/defaultStyle.css" rel="stylesheet" type="text/css">
+    <link href="./styles/index.css" rel="stylesheet" type="text/css">
 </head>
 <body onload="typeThatConsole()">
     <nav>
@@ -58,40 +17,36 @@
                 <p><a href="#work">WORK</a></p>
             </div>
             <div class="nav_menu_button nav_menu_button_active">
-                <p><a href="skills.html">SKILLS</a></p>
+                <p><a href="./skills.html">SKILLS</a></p>
             </div>
             <div class="nav_menu_button nav_menu_button_active">
-                <p><a href="documents/resume_public.pdf" type="application/pdf" target="_blank" rel="noopener noreferrer">RESUME</a></p>
+                <p><a href="./documents/resume_public.pdf" type="application/pdf" target="_blank" rel="noopener noreferrer">RESUME</a></p>
             </div>
         </div>
         <div id="nav_social_links">
-            <a href="https://www.linkedin.com/in/emma-carter-5a4094187/" target="_blank" rel="noopener noreferrer"><img class="social_link" src="images/linked-in.svg" alt="LinkedIn"></a>
-            <img class="social_link" src="images/behance.svg" alt="Behance">
-            <a href="https://www.facebook.com/EmTheUnreliable" target="_blank" rel="noopener noreferrer"><img class="social_link" src="images/facebook.svg" alt="Facebook"></a>
-            <a href="https://twitter.com/EmCMallet" target="_blank" rel="noopener noreferrer"><img class="social_link" src="images/twitter.svg" alt="Twitter"></a>
+            <a href="https://www.linkedin.com/in/emma-carter-5a4094187/" target="_blank" rel="noopener noreferrer"><img class="social_link" src="./images/linked-in.svg" alt="LinkedIn"></a>
+            <img class="social_link" src="./images/behance.svg" alt="Behance">
+            <a href="https://www.facebook.com/EmTheUnreliable" target="_blank" rel="noopener noreferrer"><img class="social_link" src="./images/facebook.svg" alt="Facebook"></a>
+            <a href="https://twitter.com/EmCMallet" target="_blank" rel="noopener noreferrer"><img class="social_link" src="./images/twitter.svg" alt="Twitter"></a>
         </div>
     </nav>
     <section id="hero_header">
-        <div id="about_me">
-            <div id="logo" >
-                <p>EM CARTER</p>
-            </div>
-            <div>
-                <h2 id="tagline">UX/UI Designer and Developer</h2>
-            </div>
-            <div>
-                <p>I am a freelance UX/UI designer and developer based in Adelaide, Australia. I specialize in mobile app development and I enjoy solving real problems users face in their everyday life. I have a broad skill set across the UX, UI and development space.</p>
-            </div>
-            <div>
-                <p>Contact me at email.me@real.domain</p>
-            </div>
+        <div id="logo" class="about_me logo">
+            <p>EM CARTER</p>
+            <h2 id="tagline">UX/UI Designer and Developer</h2>
+        </div>
+        <div id="about_me_text" class="about_me">
+            <p>I am a freelance UX/UI designer and developer based in Adelaide, Australia. With a broad skill set across the UX, UI and development space, I like to analyse and solve complex user problems. </p>
+            <p>Contact me at email.me@real.domain</p>
         </div>
         <div id="hero_terminal_animation">
             <div id="terminal_window">
-                <div id="terminal_task_bar"><p>Terminal</p></div>
-                <div id="terminal_render_area"><p id="terminal_text">em@here:~$<span id="text_block_1"></span><span id="text_block_2" class="accent3"></span><span id="text_block_3"></span><span id="cursor">&nbsp;</span></p></div>
+                <div id="terminal_task_bar"><p>Terminal<span id="interactive_mode_indicator"> (Interactive Mode On)</span></p></div>
+                <div id="terminal_render_area"><p id="terminal_text">em@here:~$<span id="text_block_1"></span><span id="text_block_2" class="accent3"></span><span id="text_block_3"></span><span id="typed_text"></span><span id="cursor">&nbsp;</span></p></div>
             </div>
+            <div id="terminal_instructions"><p>Type 'help' and press enter to get started with the terminal.</p></div>
         </div>
+        <div id="grid_spacer"></div>
     </section>
     <section id="work">
         <div class="portfolio_link_container" id="fpfa_container">
@@ -109,14 +64,16 @@
     </section>
     <footer>
         <div id="footer_social_links">
-            <a href="https://www.linkedin.com/in/emma-carter-5a4094187/" target="_blank" rel="noopener noreferrer"><img class="social_link" src="images/linked-in.svg" alt="LinkedIn"></a>
-            <img class="social_link" src="images/behance.svg" alt="Behance">
-            <a href="https://www.facebook.com/EmTheUnreliable"><img class="social_link" src="images/facebook.svg" alt="Facebook"></a>
-            <a href="https://twitter.com/EmCMallet" target="_blank" rel="noopener noreferrer"><img class="social_link" src="images/twitter.svg" alt="Twitter"></a>
+            <a href="https://www.linkedin.com/in/emma-carter-5a4094187/" target="_blank" rel="noopener noreferrer"><img class="social_link" src="./images/linked-in.svg" alt="LinkedIn"></a>
+            <img class="social_link" src="./images/behance.svg" alt="Behance">
+            <a href="https://www.facebook.com/EmTheUnreliable"><img class="social_link" src="./images/facebook.svg" alt="Facebook"></a>
+            <a href="https://twitter.com/EmCMallet" target="_blank" rel="noopener noreferrer"><img class="social_link" src="./images/twitter.svg" alt="Twitter"></a>
         </div>
         <div id="footer_identity">
             <p>Emma Carter | email.me@real.domain | Copyright 2021</p>
         </div>
     </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="./scripts/index.js" ></script>
 </body>
 </html>

@@ -2,21 +2,48 @@
 
 .skill_block {
     padding: var(--sp2);
+    background-color: var(--primary-color);
+    color: var(--surface-color);
+    box-shadow: var(--default-drop-shadow);
+    border-radius: var(--sp2);
 }
-
-
 
 /* Ids */
 
 #hero_header {
     width: var(--content-width);
+    padding: var(--sp2);
 }
 
 #my_skills {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
     width: var(--content-width);
     margin-top: var(--sp2);
+    padding: var(--sp2);
+    grid-gap: var(--sp3);
 }
 
+/* This is actually where I want to use var(--content-width) but apparently you can't use variables inside media queries (yet...) */
+@media only screen and (max-width: 1200px) {
+    #hero_header {
+        width: 100%;
+    }
+
+    #my_skills {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #hero_header {
+        width: 100%;
+    }
+
+    #my_skills {
+        width: 100%;
+        grid-template-columns: auto;
+        grid-template-rows: auto auto auto auto;
+    }
+}
