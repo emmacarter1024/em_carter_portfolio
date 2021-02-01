@@ -22,7 +22,7 @@ var delay = 3000;
 var lineDelay = 1000;
 var speed = 50;
 
-var idx = 0;
+var idx = -1;
 var line = 0;
 var spanName = ["text_block_1", "text_block_1", "text_block_1", "text_block_2", "text_block_3", "text_block_3"];
 
@@ -32,7 +32,9 @@ var lines = ["./EmCarter.sh",
             "Problem Solver.",
             ""];
 
-
+//cheating. On init the first command is animated in the terminal so it should always be there.
+var commandScrollback = ["./EmCarter.sh"];
+var commandScrollbackIdx = 0;
 
 var finish = prompt;
 
@@ -126,12 +128,39 @@ function handleDocumentKeyDownEvent(event) {
                 $("#typed_text").append(fullCommandName);
             }
         }
+    } else if (event.key == "ArrowUp" || event.key == "ArrowDown") {
+        console.log("starting commandScrollbackIdx: "+commandScrollbackIdx);
+        if ( ( commandScrollbackIdx < ( commandScrollback.length - 1 ) ) && event.key == "ArrowUp") {
+            commandScrollbackIdx++;
+        } else if (commandScrollbackIdx >= 0 && event.key == "ArrowDown") {
+            commandScrollbackIdx--;
+        }
+        console.log("new commandScrollbackIdx: "+commandScrollbackIdx);
+
+        var newCommand = "";
+        if (commandScrollbackIdx >= 0 && commandScrollbackIdx < commandScrollback.length){
+            newCommand = commandScrollback[commandScrollbackIdx];
+        }
+
+        let typedText = $("#typed_text").html();
+        let commandIndex = typedText.lastIndexOf(prompt);
+        let command = typedText;
+        if (commandIndex > 0) {
+            command = typedText.substring(commandIndex+prompt.length);
+        }
+        $("#typed_text").html(typedText.substring(0, typedText.length - command.length));
+        $("#typed_text").append(newCommand);
     }
     //TODO console scroll
     $("#terminal_render_area").scrollTop($("#terminal_render_area").height());
 }
 
 function executeConsoleCommand(command) {
+    if (command != "") {
+        commandScrollback.unshift(command);
+        commandScrollbackIdx = -1;
+    }
+    console.log("commandScrollback.length: "+commandScrollback.length);
     if (command == "EmCarter.sh" || command == "./EmCarter.sh") {
         clearConsole();
         toggleInteractiveConsole(false);
@@ -148,8 +177,8 @@ function executeConsoleCommand(command) {
     } else if (command == "DesignReviewRumble.sh" || command == "./DesignReviewRumble.sh") {
         $("#typed_text").append("<br/>&lt;Launching Design Review Rumble, that button mashing fighter game.&gt<br/>"+prompt);
     } else if (command == "BugZapper.sh" || command == "./BugZapper.sh") {
-        $("#typed_text").append("<br/>&lt;Launching some arcade madeness with Bug Zapper!&gt<br/>"+prompt);
-    } else if (command == "IterativeFantasyXXXII.sh" || command == "./IterativeFantasyXII.sh") {
+        $("#typed_text").append("<br/>&lt;Launching some arcade madness with Bug Zapper!&gt<br/>"+prompt);
+    } else if (command == "IterativeFantasyXII.sh" || command == "./IterativeFantasyXII.sh") {
         $("#typed_text").append("<br/>&lt;Launching that classic JRPG, Iterative Fantasy XXXII&gt<br/>"+prompt);
     } else if (command == "SimSiteMap.sh" || command == "./SimSiteMap.sh") {
         $("#typed_text").append("<br/>&lt;Launching the epic simulation game, SimSiteMap!&gt<br/>"+prompt);

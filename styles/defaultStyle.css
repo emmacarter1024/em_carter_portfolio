@@ -147,6 +147,7 @@ footer {
 
 #footer_identity {
     margin: 0 var(--sp2) var(--sp1) var(--sp2);
+    text-align: center;
 }
 
 #nav_social_links {
@@ -163,4 +164,9 @@ footer {
     #nav_social_links {
         display: none;
     }
+
+    nav p {
+        font-size: 1.1em;
+    }
+    
 }
