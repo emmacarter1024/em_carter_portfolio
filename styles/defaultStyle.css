@@ -33,6 +33,10 @@
     margin: 0px;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0px;
     background-color: var(--surface-color);
@@ -53,6 +57,7 @@ h2 {
     font-size: 2.25em;
     font-family: 'Titillium Web', sans-serif;
     font-weight: 700;
+    line-height: 1.2em;
 }
 
 h3 {
@@ -122,6 +127,15 @@ footer {
 .nav_menu_button {
     padding: var(--sp1) var(--sp2);
     border-bottom: 10px solid var(--primary-color);
+}
+
+.nav_menu_button_selected {
+    background-color: var(--surface-color);
+    border-bottom: 10px solid var(--surface-color);
+}
+
+.nav_menu_button_selected p {
+    color: var(--primary-color);
 }
 
 .nav_menu_button a {

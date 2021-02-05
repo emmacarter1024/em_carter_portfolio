@@ -7,20 +7,21 @@
     <title>Em Carter</title>
     <link href="./styles/defaultStyle.css" rel="stylesheet" type="text/css">
     <link href="./styles/index.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
 </head>
 <body onload="typeThatConsole()">
     <nav>
         <div id="nav_menu">
-            <div class="nav_menu_button">
-                <p>HOME</p>
+            <div id="nav_home_button" class="nav_menu_button nav_menu_button_selected">
+                <p><a id="scrollToTopLink" href="#">HOME</a></p>
             </div>
-            <div class="nav_menu_button nav_menu_button_active"> 
+            <div id="nav_work_button" class="nav_menu_button nav_menu_button_active"> 
                 <p><a href="#work">WORK</a></p>
             </div>
-            <div class="nav_menu_button nav_menu_button_active">
+            <div id="nav_skills_button" class="nav_menu_button nav_menu_button_active">
                 <p><a href="./skills.html">SKILLS</a></p>
             </div>
-            <div class="nav_menu_button nav_menu_button_active">
+            <div id="nav_resume_button" class="nav_menu_button nav_menu_button_active">
                 <p><a href="./documents/resume_public.pdf" type="application/pdf" target="_blank" rel="noopener noreferrer">RESUME</a></p>
             </div>
         </div>
@@ -40,9 +41,12 @@
             <p>I am a freelance UX/UI designer and developer based in Adelaide, Australia. With a broad skill set across the UX, UI and development space, I like to analyse and solve complex user problems. </p>
             <p>Contact me at email.me@real.domain</p>
         </div>
-        <div id="hero_terminal_animation">
+        <div id="hero_terminal_animation" >
             <div id="terminal_window">
-                <div id="terminal_task_bar"><p>Terminal<span id="interactive_mode_indicator"> (Interactive Mode On)</span></p></div>
+                <div id="terminal_task_bar">
+                    <p>Terminal<span id="interactive_mode_indicator"> (Interactive Mode On)</span></p>
+                </div>
+                <div id="min_max_button"></div>
                 <div id="terminal_render_area"><p id="terminal_text">em@here:~$<span id="text_block_1"></span><span id="text_block_2" class="accent3"></span><span id="text_block_3"></span><span id="typed_text"></span><span id="cursor">&nbsp;</span></p></div>
             </div>
             <div id="terminal_instructions"><p>Type 'help' and press enter to get started with the terminal.</p></div>
@@ -51,16 +55,25 @@
     </section>
     <section id="work">
         <div class="portfolio_link_container" id="fpfa_container">
-            <h2>Fair Play For All</h2>
-            <p>This project was a responsive website redesign for a charity called ‘Fair Play for All’. The problem we focused on was improving the content, design and layout so it was clearer what the charity actually did.</p>
+            <div class="portfolio_pretty_picture"></div>
+            <div class="portfolio_details">
+                <h2>Fair Play For All</h2>
+                <p>This project was a responsive website redesign for a charity called ‘Fair Play for All’. The problem we focused on was improving the content, design and layout so it was clearer what the charity actually did.</p>
+            </div>
         </div>
         <div class="portfolio_link_container" id="saas_container">
-            <h2>SA Ambulance Service</h2>
-            <p>This project was a responsive website redesign for the SA Ambulance Service. The focus of the redesign was improving the readability and usability of the website.</p>
+            <div class="portfolio_pretty_picture"></div>
+            <div class="portfolio_details">
+                <h2>SA Ambulance Service</h2>
+                <p>This project was a responsive website redesign for the SA Ambulance Service. The focus of the redesign was improving the readability and usability of the website.</p>
+            </div>
         </div>
         <div class="portfolio_link_container" id="terminal_game_container">
-            <h2>Mystery Project 3</h2>
-            <p>A third case study? What is it? Do you know? Do I even know yet? So mysterious.</p>
+            <div class="portfolio_pretty_picture"></div>
+            <div class="portfolio_details">
+                <h2>Mystery Project 3</h2>
+                <p>A third case study? What is it? Do you know? Do I even know yet? So mysterious.</p>
+            </div>
         </div>
     </section>
     <footer>

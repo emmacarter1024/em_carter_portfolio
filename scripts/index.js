@@ -5,7 +5,7 @@ const consoleCharList = "abcdefghijklmnopqrstuvwxyz0123456789-_.//";
 const consoleCommands = ["EmCarter.sh",
                         "DesignReviewRumble.sh",
                         "BugZapper.sh",
-                        "IterativeFantasyXII.sh",
+                        "TheFridge.sh",
                         "SimSiteMap.sh",
                         "ls",
                         "clear",
@@ -14,7 +14,7 @@ const consoleCommands = ["EmCarter.sh",
 const homeDirFiles = ["EmCarter.sh",
                         "DesignReviewRumble.sh",
                         "BugZapper.sh",
-                        "IterativeFantasyXII.sh",
+                        "TheFridge.sh",
                         "SimSiteMap.sh"];
 
 var delayDone = false;
@@ -78,7 +78,6 @@ function toggleInteractiveConsole(isConsoleInteractive) {
 }
 
 function handleDocumentKeyDownEvent(event) {
-    console.log(event.key);
     if (consoleCharList.indexOf(event.key.toLowerCase()) >= 0) {
         $("#typed_text").append(event.key);
     } else if (event.key == "Enter") {
@@ -108,8 +107,18 @@ function handleDocumentKeyDownEvent(event) {
         let typedText = $("#typed_text").html();
         let commandIndex = typedText.lastIndexOf(prompt);
         let command = typedText;
+        let hasDotPathAlready = false;
         if (commandIndex > 0) {
             command = typedText.substring(commandIndex+prompt.length);
+        }
+        if (command.length > 0) {
+            if (command.startsWith("./")) {
+                command = command.replace("./","");
+                hasDotPathAlready = true;
+            }
+            if (command.startsWith(".")) {
+                command = command.replace(".","");
+            }
         }
         if (command.length > 0) {
             let fullCommandName = "";
@@ -119,7 +128,9 @@ function handleDocumentKeyDownEvent(event) {
                 }
             }
             let fileNamePosition = homeDirFiles.indexOf(fullCommandName)
-            if (fileNamePosition >= 0) {
+            if (fileNamePosition >= 0 && hasDotPathAlready) {
+                fullCommandName = fullCommandName;
+            } else if (fileNamePosition >= 0) {
                 fullCommandName = "./"+fullCommandName;
             }
 
@@ -129,13 +140,11 @@ function handleDocumentKeyDownEvent(event) {
             }
         }
     } else if (event.key == "ArrowUp" || event.key == "ArrowDown") {
-        console.log("starting commandScrollbackIdx: "+commandScrollbackIdx);
         if ( ( commandScrollbackIdx < ( commandScrollback.length - 1 ) ) && event.key == "ArrowUp") {
             commandScrollbackIdx++;
         } else if (commandScrollbackIdx >= 0 && event.key == "ArrowDown") {
             commandScrollbackIdx--;
         }
-        console.log("new commandScrollbackIdx: "+commandScrollbackIdx);
 
         var newCommand = "";
         if (commandScrollbackIdx >= 0 && commandScrollbackIdx < commandScrollback.length){
@@ -160,7 +169,6 @@ function executeConsoleCommand(command) {
         commandScrollback.unshift(command);
         commandScrollbackIdx = -1;
     }
-    console.log("commandScrollback.length: "+commandScrollback.length);
     if (command == "EmCarter.sh" || command == "./EmCarter.sh") {
         clearConsole();
         toggleInteractiveConsole(false);
@@ -178,8 +186,8 @@ function executeConsoleCommand(command) {
         $("#typed_text").append("<br/>&lt;Launching Design Review Rumble, that button mashing fighter game.&gt<br/>"+prompt);
     } else if (command == "BugZapper.sh" || command == "./BugZapper.sh") {
         $("#typed_text").append("<br/>&lt;Launching some arcade madness with Bug Zapper!&gt<br/>"+prompt);
-    } else if (command == "IterativeFantasyXII.sh" || command == "./IterativeFantasyXII.sh") {
-        $("#typed_text").append("<br/>&lt;Launching that classic JRPG, Iterative Fantasy XXXII&gt<br/>"+prompt);
+    } else if (command == "TheFridge.sh" || command == "./TheFridge.sh") {
+        $("#typed_text").append("<br/>&lt;Launching that gritty mystery game, The Fridge...&gt<br/>"+prompt);
     } else if (command == "SimSiteMap.sh" || command == "./SimSiteMap.sh") {
         $("#typed_text").append("<br/>&lt;Launching the epic simulation game, SimSiteMap!&gt<br/>"+prompt);
     } else if (command == "") {
@@ -206,3 +214,43 @@ function clearConsole() {
     $("#text_block_3").html("");
     $("#typed_text").html("");
 }
+
+$("#scrollToTopLink").on("click", function() {
+    $(document).scrollTop();
+});
+
+//some code to pick up the scroll position, and use that to determine which 
+//nav menu item to be selected.
+//using requestAnimationFrame() as suggested by MDN to make sure not to
+//kill the browser with a buttload of scroll events.
+//https://developer.mozilla.org/en-US/docs/Web/API/Document/scroll_event
+var lastKnownScrollPosition = 0;
+var ticking = false;
+var magicScrollFudgeFactor = 20;        //the anchor link wasn't quite making the cut-over position, so I added a fudge factor.
+
+function toggleSelectedNavItem(scrollPos) {
+    let workPos = $('#work').first().position().top;
+    let scrolledToWorkYet = scrollPos >= workPos - 20;
+    if (scrolledToWorkYet) {
+        $("#nav_home_button").removeClass("nav_menu_button_selected");
+        $("#nav_work_button").addClass("nav_menu_button_selected");
+    } else {
+        $("#nav_home_button").addClass("nav_menu_button_selected");
+        $("#nav_work_button").removeClass("nav_menu_button_selected");
+    }
+}
+
+function scrollEventHandler(e) {
+    lastKnownScrollPosition = window.scrollY;
+
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+          toggleSelectedNavItem(lastKnownScrollPosition);
+        ticking = false;
+      });
+  
+      ticking = true;
+    }
+}
+
+document.addEventListener('scroll', scrollEventHandler);
