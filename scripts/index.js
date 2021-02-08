@@ -6,7 +6,6 @@ const consoleCommands = ["EmCarter.sh",
                         "DesignReviewRumble.sh",
                         "BugZapper.sh",
                         "TheFridge.sh",
-                        "SimSiteMap.sh",
                         "ls",
                         "clear",
                         "help"];
@@ -14,8 +13,7 @@ const consoleCommands = ["EmCarter.sh",
 const homeDirFiles = ["EmCarter.sh",
                         "DesignReviewRumble.sh",
                         "BugZapper.sh",
-                        "TheFridge.sh",
-                        "SimSiteMap.sh"];
+                        "TheFridge.sh"];
 
 var delayDone = false;
 var delay = 3000;
@@ -188,8 +186,6 @@ function executeConsoleCommand(command) {
         $("#typed_text").append("<br/>&lt;Launching some arcade madness with Bug Zapper!&gt<br/>"+prompt);
     } else if (command == "TheFridge.sh" || command == "./TheFridge.sh") {
         $("#typed_text").append("<br/>&lt;Launching that gritty mystery game, The Fridge...&gt<br/>"+prompt);
-    } else if (command == "SimSiteMap.sh" || command == "./SimSiteMap.sh") {
-        $("#typed_text").append("<br/>&lt;Launching the epic simulation game, SimSiteMap!&gt<br/>"+prompt);
     } else if (command == "") {
         $("#typed_text").append("<br/>"+prompt);
     } else if (command == "help") {
@@ -254,3 +250,24 @@ function scrollEventHandler(e) {
 }
 
 document.addEventListener('scroll', scrollEventHandler);
+
+function toggleConsoleFullscreenMode(goFullScreen) {
+    if (goFullScreen == undefined) {
+        goFullScreen = !($("#hero_terminal_animation").hasClass("modal_terminal"));
+    }
+
+    if (goFullScreen) {
+        $("#hero_terminal_animation").addClass("modal_terminal");
+        $("#min_max_button").removeClass("max_button");
+        $("#min_max_button").addClass("min_button");
+        $("body").css("overflow-y", "hidden");
+        
+    } else {
+        $("#hero_terminal_animation").removeClass("modal_terminal");
+        $("#min_max_button").addClass("max_button");
+        $("#min_max_button").removeClass("min_button");
+        $("body").css("overflow-y", "initial");
+    }
+}
+
+$("#min_max_button").on("click", function() {toggleConsoleFullscreenMode()});
