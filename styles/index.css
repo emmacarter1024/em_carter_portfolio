@@ -13,6 +13,11 @@
     box-shadow: var(--default-drop-shadow);
 }
 
+.porfolio_link {
+    color: inherit;
+    text-decoration: none;
+}
+
 .portfolio_details {
     padding: var(--sp3);
 }

@@ -6,6 +6,8 @@ const consoleCommands = ["EmCarter.sh",
                         "DesignReviewRumble.sh",
                         "BugZapper.sh",
                         "TheFridge.sh",
+                        "FairPlayForAll.CaseStudy.sh",
+                        "SAAmbulanceService.CaseStudy.sh",
                         "ls",
                         "clear",
                         "help"];
@@ -13,7 +15,9 @@ const consoleCommands = ["EmCarter.sh",
 const homeDirFiles = ["EmCarter.sh",
                         "DesignReviewRumble.sh",
                         "BugZapper.sh",
-                        "TheFridge.sh"];
+                        "TheFridge.sh",
+                        "FairPlayForAll.CaseStudy.sh",
+                        "SAAmbulanceService.CaseStudy.sh"];
 
 var delayDone = false;
 var delay = 3000;
@@ -158,7 +162,6 @@ function handleDocumentKeyDownEvent(event) {
         $("#typed_text").html(typedText.substring(0, typedText.length - command.length));
         $("#typed_text").append(newCommand);
     }
-    //TODO console scroll
     $("#terminal_render_area").scrollTop($("#terminal_render_area").height());
 }
 
@@ -186,6 +189,10 @@ function executeConsoleCommand(command) {
         $("#typed_text").append("<br/>&lt;Launching some arcade madness with Bug Zapper!&gt<br/>"+prompt);
     } else if (command == "TheFridge.sh" || command == "./TheFridge.sh") {
         $("#typed_text").append("<br/>&lt;Launching that gritty mystery game, The Fridge...&gt<br/>"+prompt);
+    } else if (command == "FairPlayForAll.CaseStudy.sh" || command == "./FairPlayForAll.CaseStudy.sh") {
+        window.open("./case_studies/fpfa.html","_top");
+    } else if (command == "SAAmbulanceService.CaseStudy.sh" || command == "./SAAmbulanceService.CaseStudy.sh") {
+        window.open("./case_studies/saas.html","_top");
     } else if (command == "") {
         $("#typed_text").append("<br/>"+prompt);
     } else if (command == "help") {

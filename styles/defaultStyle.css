@@ -106,8 +106,6 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: -webkit-sticky;       /* safari apparently? */
-    position: sticky;
     bottom: 0;
     width: var(--nav-width);
     box-shadow: var(--default-drop-shadow);
