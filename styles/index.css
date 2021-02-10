@@ -72,7 +72,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 400px;
+    height: 500px;
 }
 
 #hero_terminal_animation.modal_terminal {
@@ -94,10 +94,10 @@
 }
 
 #fpfa_container .portfolio_pretty_picture {
-    background-image: url("../images/FPFA_preview.png");
+    background-image: url("../images/FPFA_TitleCard_1200.png");
     background-repeat: no-repeat;
-    background-position: 100% 15%;
-    background-size: 135%;
+    background-position: center;
+    background-size: 75%;
 }
 
 #saas_container .portfolio_pretty_picture {
@@ -223,6 +223,10 @@
 
     #hero_terminal_animation {
         padding: var(--sp2);
+    }
+
+    #terminal_instructions > p{
+        display: none;
     }
 
     #work {

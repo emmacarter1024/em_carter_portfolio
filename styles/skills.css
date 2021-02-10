@@ -8,6 +8,10 @@
     border-radius: var(--sp2);
 }
 
+.highlighted_text {
+    color: var(--accent-3-color);
+}
+
 /* Ids */
 
 #hero_header {
