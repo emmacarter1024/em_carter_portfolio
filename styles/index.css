@@ -4,12 +4,13 @@
 .portfolio_link_container {
     border: 1px solid var(--primary-color);
     height: 500px;
-    margin: var(--sp3);
+    margin: var(--sp4) var(--sp3);
     border-radius: var(--sp3);
     background-color: var(--primary-color);
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: flex-end;
+    align-items: center;
     box-shadow: var(--default-drop-shadow);
 }
 
@@ -20,6 +21,8 @@
 
 .portfolio_details {
     padding: var(--sp3);
+    width: 33%;
+    height: min-content;
 }
 
 .portfolio_details h2,.portfolio_details p {
@@ -29,7 +32,7 @@
 .portfolio_pretty_picture {
     height: 100%;
     width: 100%;
-    border-radius: var(--sp3) var(--sp3) 0 0 ;
+    border-radius: 0 var(--sp3) var(--sp3) 0 ;
 }
 
 .accent3 {
@@ -39,8 +42,6 @@
 .about_me {
     padding: var(--sp2);
 }
-
-
 
 /* Ids */
 
@@ -94,24 +95,24 @@
 }
 
 #fpfa_container .portfolio_pretty_picture {
-    background-image: url("../images/FPFA_TitleCard_1200.png");
+    background-image: url("../images/FP_Cover2.png");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 75%;
+    background-size: 100%;
 }
 
 #saas_container .portfolio_pretty_picture {
-    background-image: url("../images/saas_wireflows.png");
+    background-image: url("../images/SAAS_TitleCard.png");
     background-repeat: no-repeat;
-    background-position: 55% 15%;
-    background-size: 135%;
+    background-position: center;
+    background-size: 100%;
 }
 
 #terminal_game_container .portfolio_pretty_picture {
     background-image: url("../images/question-mark-on-chalkboard.jpg");
-    background-repeat: repeat;
+    background-repeat: no-repeat;
     background-position: center center;
-    background-size: 35%;
+    background-size: 50%;
 }
 
 #terminal_window {
@@ -209,7 +210,7 @@
     }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
 
     #hero_header {
         grid-template-columns: 1fr;
@@ -235,5 +236,15 @@
 
     #grid_spacer {
         display: none;
+    }
+
+    .portfolio_link_container {
+        flex-direction: column;
+    }
+
+    .portfolio_details {
+        width: 100%;
+        height: auto;
+        order: 2
     }
 }

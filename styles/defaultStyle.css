@@ -44,7 +44,7 @@ body {
     background-color: var(--surface-color);
     color: var(--primary-color);
     font-size: var(--base-font-size);
-    line-height: 1.3;
+    line-height: 1.4;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -167,6 +167,10 @@ footer {
 
 #nav_social_links {
     transition: ease-in-out all 0.2s;
+}
+
+#tagline {
+    margin-top: var(--sp2);
 }
 
 @media only screen and (max-width: 800px) {

@@ -25,6 +25,7 @@
     grid-template-rows: auto auto;
     width: var(--content-width);
     margin-top: var(--sp2);
+    margin-bottom: var(--sp3);
     padding: var(--sp2);
     grid-gap: var(--sp3);
 }
